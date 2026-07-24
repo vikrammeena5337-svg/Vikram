@@ -1,0 +1,467 @@
+/* ==========================================================================
+   Premium Dark UI Settings & Reset
+   ========================================================================== */
+:root {
+    --bg-black: #0a0a0c;
+    --card-bg: rgba(20, 20, 25, 0.65);
+    --card-border: rgba(212, 175, 55, 0.15);
+    --gold-primary: #d4af37;
+    --gold-light: #f3e5ab;
+    --gold-dark: #aa7c11;
+    --gold-gradient: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa7c11 100%);
+    --tg-gradient: linear-gradient(135deg, #2abeef 0%, #229edd 100%);
+    --tg-glow: rgba(34, 158, 221, 0.4);
+    --indicator-green: #00ff88;
+    --font-main: 'Poppins', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: var(--bg-black);
+    color: #ffffff;
+    font-family: var(--font-main);
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* ==========================================================================
+   Background Dynamics & Particle Arena
+   ========================================================================== */
+.bg-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    background: radial-gradient(circle at 50% 50%, #141419 0%, #0a0a0c 100%);
+}
+
+#particleCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glow-circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.25;
+    mix-blend-mode: screen;
+}
+
+.gc-1 {
+    top: -10%;
+    left: 10%;
+    width: 400px;
+    height: 400px;
+    background: var(--gold-dark);
+    animation: floatingCanvas 20s infinite ease-in-out;
+}
+
+.gc-2 {
+    bottom: 10%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: #1d3557;
+    animation: floatingCanvas 25s infinite ease-in-out reverse;
+}
+
+.gc-3 {
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    background: var(--gold-primary);
+    opacity: 0.1;
+}
+
+/* ==========================================================================
+   Layout Structures (Mobile First Architecture)
+   ========================================================================== */
+.container {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 40px 20px 20px 20px;
+}
+
+.gold-gradient-text {
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+/* Header Elements */
+.header-section h1 {
+    font-size: 2.5rem;
+    margin-top: 15px;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
+}
+
+.profile-wrapper {
+    width: 110px;
+    height: 110px;
+    margin: 0 auto;
+    border-radius: 50%;
+    padding: 4px;
+    background: var(--gold-gradient);
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+    position: relative;
+}
+
+.profile-img-fallback {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #141417;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #000;
+}
+
+.profile-img-fallback i {
+    font-size: 2.8rem;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-top: 8px;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Header CTA Positioned right below Subtitle */
+.header-cta {
+    margin-top: 25px;
+}
+
+/* ==========================================================================
+   Glassmorphism UI Cards
+   ========================================================================== */
+.glass-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--card-border);
+    border-radius: 24px;
+    padding: 30px 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 
+                inset 0 1px 2px rgba(255, 255, 255, 0.1);
+    margin-top: 30px;
+    position: relative;
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 28px 50px rgba(0, 0, 0, 0.8), 
+                0 0 20px rgba(212, 175, 55, 0.15),
+                inset 0 1px 2px rgba(255, 255, 255, 0.15);
+}
+
+.card-title {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+}
+
+/* Inner Elements Architecture */
+.games-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.glass-card-nested {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 14px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+}
+
+.glass-card-nested:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(212, 175, 55, 0.3);
+    transform: scale(1.02);
+    padding-left: 24px;
+}
+
+.game-name {
+    font-weight: 600;
+    font-size: 1.05rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    letter-spacing: 0.5px;
+}
+
+.gold-accent {
+    color: var(--gold-primary);
+}
+
+.status-indicator {
+    background: rgba(0, 255, 136, 0.1);
+    color: var(--indicator-green);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid rgba(0, 255, 136, 0.2);
+    letter-spacing: 1px;
+}
+
+.status-indicator .dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--indicator-green);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--indicator-green);
+}
+
+.hook-text h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 25px 0 10px 0;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+}
+
+/* ==========================================================================
+   Hyper-Premium Action Components
+   ========================================================================== */
+.btn-container {
+    width: 100%;
+    position: relative;
+}
+
+.cta-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    padding: 20px 16px;
+    background: var(--tg-gradient);
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.15rem;
+    border-radius: 16px;
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 30px var(--tg-glow);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: buttonPulse 2s infinite ease-in-out;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 0 15px 35px rgba(34, 158, 221, 0.6), 0 0 25px rgba(255, 255, 255, 0.2);
+}
+
+.cta-button:active {
+    transform: translateY(1px);
+}
+
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    animation: rippleEffect 0.6s linear;
+    background: rgba(255, 255, 255, 0.35);
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   Live Countdown Timer Modules
+   ========================================================================== */
+.timer-section {
+    margin-top: 35px;
+}
+
+.timer-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.countdown-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.time-block {
+    margin-top: 0;
+    padding: 15px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+}
+
+.time-num {
+    font-size: 2rem;
+    font-weight: 800;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-variant-numeric: tabular-nums;
+}
+
+.time-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 1px;
+    margin-top: 4px;
+}
+
+/* ==========================================================================
+   Footer Ecosystem
+   ========================================================================== */
+.footer {
+    padding: 40px 20px 20px 20px;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.3);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* ==========================================================================
+   Animations Engine
+   ========================================================================== */
+.fade-in {
+    animation: fadeIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+.slide-up {
+    opacity: 0;
+    animation: slideUp 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) 0.2s forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes floatingCanvas {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-40px) scale(1.15); }
+}
+
+@keyframes floatingAnimation {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.floating-animation {
+    animation: floatingAnimation 4s ease-in-out infinite;
+}
+
+@keyframes animatePulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+.animate-pulse {
+    animation: animatePulse 2s infinite ease-in-out;
+}
+
+@keyframes buttonPulse {
+    0%, 100% {
+        box-shadow: 0 8px 30px var(--tg-glow);
+    }
+    50% {
+        box-shadow: 0 8px 45px rgba(34, 158, 221, 0.7), 0 0 15px rgba(212, 175, 55, 0.2);
+    }
+}
+
+@keyframes rippleEffect {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+@media (min-width: 576px) {
+    .container {
+        max-width: 520px;
+        padding-top: 60px;
+    }
+    
+    .header-section h1 {
+        font-size: 3rem;
+    }
+    
+    .glass-card {
+        padding: 40px 30px;
+    }
+    
+    .time-block {
+        padding: 20px 10px;
+    }
+    
+    .time-num {
+        font-size: 2.3rem;
+    }
+}
